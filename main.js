@@ -1,6 +1,6 @@
 // typed js
 const typed = new Typed(".typing", {
-  strings: ["Discord Developer", "Master Skidder", "Doesn't know jack shit lol"],
+  strings: ["Discord Dumbass", "Master Skidder", "Doesn't know jack shit lol"],
   loop: true,
   typeSpeed: 80,
   backSpeed: 40,
