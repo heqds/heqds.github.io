@@ -1,31 +1,24 @@
-// Retrieve Elements
 const executeCodeBtn = document.querySelector(".editor__run");
 const resetCodeBtn = document.querySelector(".editor__reset");
 const console_ = document.querySelector(".editor__console");
 
-// Setup Ace
 let codeEditor = ace.edit("editorCode");
-let defaultCode = 'output "Hello World!"';
+let defaultCode = 'output "Suck my dick!!"';
 
 let editorLib = {
   init() {
-    // Configure Ace
 
-    // Theme
     codeEditor.setTheme("ace/theme/dracula");
 
-    // Set language
     codeEditor.session.setMode("ace/mode/python");
     codeEditor.setFontSize(22);
 
-    // Set Default Code
     codeEditor.setValue(defaultCode);
   },
 };
 
-// Events
 executeCodeBtn.addEventListener("click", () => {
-  // Get input from the code editor
+
   const userCode = codeEditor.getValue();
   const params = { code: userCode };
 
@@ -43,7 +36,6 @@ executeCodeBtn.addEventListener("click", () => {
 });
 
 resetCodeBtn.addEventListener("click", () => {
-  // Clear ace editor
   codeEditor.setValue("");
 });
 
