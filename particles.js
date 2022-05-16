@@ -1,18 +1,9 @@
-/* -----------------------------------------------
-/* Author : Vincent Garreau  - vincentgarreau.com
-/* MIT license: http://opensource.org/licenses/MIT
-/* Demo / Generator : vincentgarreau.com/particles.js
-/* GitHub : github.com/VincentGarreau/particles.js
-/* How to use? : Check the GitHub README
-/* v2.0.0
-/* ----------------------------------------------- */
-
 var pJS = function (tag_id, params) {
   var canvas_el = document.querySelector(
     "#" + tag_id + " > .particles-js-canvas-el"
   );
 
-  /* particles.js variables with default values */
+ 
   this.pJS = {
     canvas: {
       el: canvas_el,
@@ -137,7 +128,6 @@ var pJS = function (tag_id, params) {
 
   var pJS = this.pJS;
 
-  /* params settings */
   if (params) {
     Object.deepExtend(pJS, params);
   }
@@ -184,8 +174,6 @@ var pJS = function (tag_id, params) {
       pJS.tmp.obj.mode_repulse_distance * pJS.canvas.pxratio;
   };
 
-  /* ---------- pJS functions - canvas ------------ */
-
   pJS.fn.canvasInit = function () {
     pJS.canvas.ctx = pJS.canvas.el.getContext("2d");
   };
@@ -199,7 +187,6 @@ var pJS = function (tag_id, params) {
         pJS.canvas.w = pJS.canvas.el.offsetWidth;
         pJS.canvas.h = pJS.canvas.el.offsetHeight;
 
-        /* resize canvas */
         if (pJS.tmp.retina) {
           pJS.canvas.w *= pJS.canvas.pxratio;
           pJS.canvas.h *= pJS.canvas.pxratio;
@@ -208,7 +195,6 @@ var pJS = function (tag_id, params) {
         pJS.canvas.el.width = pJS.canvas.w;
         pJS.canvas.el.height = pJS.canvas.h;
 
-        /* repaint canvas on anim disabled */
         if (!pJS.particles.move.enable) {
           pJS.fn.particlesEmpty();
           pJS.fn.particlesCreate();
@@ -216,7 +202,6 @@ var pJS = function (tag_id, params) {
           pJS.fn.vendors.densityAutoParticles();
         }
 
-        /* density particles enabled */
         pJS.fn.vendors.densityAutoParticles();
       });
     }
@@ -230,10 +215,7 @@ var pJS = function (tag_id, params) {
     pJS.canvas.ctx.clearRect(0, 0, pJS.canvas.w, pJS.canvas.h);
   };
 
-  /* --------- pJS functions - particles ----------- */
-
   pJS.fn.particle = function (color, opacity, position) {
-    /* size */
     this.radius =
       (pJS.particles.size.random ? Math.random() : 1) *
       pJS.particles.size.value;
@@ -244,23 +226,19 @@ var pJS = function (tag_id, params) {
         this.vs = this.vs * Math.random();
       }
     }
-
-    /* position */
+    
     this.x = position ? position.x : Math.random() * pJS.canvas.w;
     this.y = position ? position.y : Math.random() * pJS.canvas.h;
-
-    /* check position  - into the canvas */
+    
     if (this.x > pJS.canvas.w - this.radius * 2) this.x = this.x - this.radius;
     else if (this.x < this.radius * 2) this.x = this.x + this.radius;
     if (this.y > pJS.canvas.h - this.radius * 2) this.y = this.y - this.radius;
     else if (this.y < this.radius * 2) this.y = this.y + this.radius;
 
-    /* check position - avoid overlap */
     if (pJS.particles.move.bounce) {
       pJS.fn.vendors.checkOverlap(this, position);
     }
 
-    /* color */
     this.color = {};
     if (typeof color.value == "object") {
       if (color.value instanceof Array) {
@@ -304,7 +282,6 @@ var pJS = function (tag_id, params) {
       this.color.rgb = hexToRgb(this.color.value);
     }
 
-    /* opacity */
     this.opacity =
       (pJS.particles.opacity.random ? Math.random() : 1) *
       pJS.particles.opacity.value;
@@ -316,7 +293,6 @@ var pJS = function (tag_id, params) {
       }
     }
 
-    /* animation - velocity for speed */
     var velbase = {};
     switch (pJS.particles.move.direction) {
       case "top":
@@ -360,14 +336,8 @@ var pJS = function (tag_id, params) {
       this.vy = velbase.y + Math.random() - 0.5;
     }
 
-    // var theta = 2.0 * Math.PI * Math.random();
-    // this.vx = Math.cos(theta);
-    // this.vy = Math.sin(theta);
-
     this.vx_i = this.vx;
     this.vy_i = this.vy;
-
-    /* if shape is image */
 
     var shape_type = pJS.particles.shape.type;
     if (typeof shape_type == "object") {
