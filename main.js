@@ -1,4 +1,3 @@
-// typed js
 const typed = new Typed(".typing", {
   strings: ["Discord Dumbass", "Master Skidder", "Doesn't know jack shit lol"],
   loop: true,
@@ -6,7 +5,6 @@ const typed = new Typed(".typing", {
   backSpeed: 40,
 });
 
-// Theme changer
 const themes = [
   "#9affe1",
   "#abff9a",
@@ -20,7 +18,6 @@ const themes = [
   "#7BF774",
   "#F770F4",
   "#E2F780",
-];
 const root = document.querySelector(":root");
 const themeToggle = document.querySelector("#main-name");
 let currentTheme = 0;
@@ -47,7 +44,7 @@ window.addEventListener("scroll", () => {
 
 const hamburger = document.querySelector("#mobile-menu");
 const tabs = document.querySelector(".navbar__menu");
-//display hamburger menue
+
 const mobileMenu = () => {
   hamburger.classList.toggle("is-active");
   tabs.classList.toggle("active");
@@ -55,7 +52,6 @@ const mobileMenu = () => {
 
 hamburger.addEventListener("click", mobileMenu);
 
-// experience projects toggle
 const exp = document.querySelector("#exp__btn");
 const prj = document.querySelector("#prj__btn");
 
@@ -73,7 +69,6 @@ exp.addEventListener("click", function () {
   document.querySelector("#projects").classList.add("noshow");
 });
 
-//highlight active menu
 const navLogo = document.querySelector("#navbar__logo");
 const highlightMenu = () => {
   const activeElement = document.querySelector(".highlight");
@@ -115,7 +110,6 @@ const highlightMenu = () => {
 window.addEventListener("scroll", highlightMenu);
 window.addEventListener("click", highlightMenu);
 
-//close mobile menu on item click
 const hideMobileMenu = () => {
   const menuBars = document.querySelector(".is-active");
   if (window.innerWidth <= 768 && menuBars) {
